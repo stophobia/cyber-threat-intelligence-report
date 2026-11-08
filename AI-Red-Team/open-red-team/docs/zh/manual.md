@@ -265,7 +265,8 @@ docker compose up -d ort    # http://localhost:8081
 | `ORT_SCOPE_MODE` | `open` 禁用域名检查（仅本地实验室） |
 | `ORT_OPERATOR` | 记录到审计条目和 LangFuse 追踪的操作员标识 |
 
-会话为内存存储（LRU 上限、空闲淘汰），**服务器重启后清空** — 磁盘持久化不在本版本范围内。
+会话持久化于 SQLite（`ORT_DB_PATH` 的 `sessions` 表，30 天清理），**服务器重启后依然保留**。
+仅在禁用本地认证时使用内存回退。
 
 ### 可观测性
 

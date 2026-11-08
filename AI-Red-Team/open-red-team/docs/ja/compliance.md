@@ -19,6 +19,7 @@ Open AI Red Team は許可された任務のための方法論注入ミドルウ
 | AUTH-4 | ログイン総当たりロック（ユーザー名+IPごと、HTTP 429）+ ログイン成功/失敗の監査 | `src/dashboard/ratelimit.ts`、`event: "auth"` 監査 |
 | AUTH-5 | アカウントライフサイクル管理（作成/パスワード初期化/削除、adminロール、初回ログイン変更強制） | `/api/users`、Settingsタブ |
 | SESS-1 | 運用者別の会話分離（インメモリセッション、LRU上限、アイドル追い出し） | `src/sessions.ts` |
+| SESS-2 | セッションのSQLite永続化（再起動後も維持、30日プルーン） | `src/sessions.ts`、`sessions` テーブル |
 | AUDIT-1 | JSONL監査: ts, sessionId, operator, decision, flaggedTargets, matchedSkills, プロンプトSHA-256（原文なし） | `ORT_AUDIT_LOG` |
 | AUDIT-2 | `ORT_AUDIT_REQUIRED=1` なら監査書込失敗時にリクエスト失敗 | `src/dashboard/server.ts` |
 | AUDIT-3 | `ORT_AUDIT_MAX_BYTES` 到達時の監査ログローテーション（単一） | `src/auditlog.ts` |

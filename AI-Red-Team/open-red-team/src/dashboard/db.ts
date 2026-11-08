@@ -13,6 +13,14 @@ export interface UserRow {
   created_at: string;
 }
 
+export interface SessionRow {
+  id: string;
+  operator: string;
+  messages: string;
+  created_at: number;
+  last_used_at: number;
+}
+
 export interface OrtDb {
   db: Database.Database;
   getUser(username: string): UserRow | undefined;
@@ -23,6 +31,9 @@ export interface OrtDb {
   verifyPassword(username: string, password: string): boolean;
   getSetting(key: string): string | undefined;
   setSetting(key: string, value: string): void;
+  getSession(id: string): SessionRow | undefined;
+  upsertSession(id: string, operator: string, messagesJson: string): void;
+  pruneSessions(beforeMs: number): void;
   close(): void;
 }
 
@@ -43,6 +54,13 @@ const MIGRATIONS: string[] = [
   CREATE TABLE IF NOT EXISTS settings (
     key TEXT PRIMARY KEY,
     value TEXT NOT NULL
+  );`,
+  `CREATE TABLE IF NOT EXISTS sessions (
+    id TEXT PRIMARY KEY,
+    operator TEXT NOT NULL,
+    messages TEXT NOT NULL DEFAULT '[]',
+    created_at INTEGER NOT NULL,
+    last_used_at INTEGER NOT NULL
   );`,
 ];
 
@@ -114,6 +132,21 @@ export function openDb(path?: string): OrtDb {
         | { value: string }
         | undefined;
       return row?.value;
+    },
+    getSession(id: string): SessionRow | undefined {
+      return db.prepare("SELECT id, operator, messages, created_at, last_used_at FROM sessions WHERE id = ?").get(id) as
+        | SessionRow
+        | undefined;
+    },
+    upsertSession(id: string, operator: string, messagesJson: string): void {
+      db.prepare(
+        `INSERT INTO sessions (id, operator, messages, created_at, last_used_at)
+         VALUES (?, ?, ?, ?, ?)
+         ON CONFLICT(id) DO UPDATE SET operator = excluded.operator, messages = excluded.messages, last_used_at = excluded.last_used_at`,
+      ).run(id, operator, messagesJson, Date.now(), Date.now());
+    },
+    pruneSessions(beforeMs: number): void {
+      db.prepare("DELETE FROM sessions WHERE last_used_at < ?").run(beforeMs);
     },
     setSetting(key: string, value: string): void {
       db.prepare("INSERT INTO settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value").run(

@@ -44,6 +44,7 @@
 - [x] Web 面板（会话、审计、OIDC、指标）
 - [x] 令牌预算引擎（上下文上限、按节截断、index_only）+ 历史轮次预算
 - [x] 按操作员隔离会话（SessionStore、X-Ort-Session、OIDC sub 归属）
+- [x] 会话 SQLite 持久化（30 天清理，无本地认证时仅内存回退）
 - [x] 范围护栏（调用前拒绝）+ fail-closed 启动（exit 1）
 - [x] 本地账户（SQLite）：admin/admin 强制改密、HMAC 令牌
 - [x] 面板运行时设置（范围/预算/引擎即时生效，admin 角色）
@@ -87,3 +88,4 @@
 | 0.4.0 | 令牌预算、测试 30 项、范围护栏、LangFuse/OIDC/指标、部署工具 |
 | 0.5.0 | P0 加固：范围拒绝（0 调用）、会话隔离、历史预算、fail-closed、PoC compose、必需密钥、测试 63 项、检索基准、合规文档 |
 | 0.6.0 | SQLite 本地账户（admin/admin 强制改密）、面板 Settings 页、路线图/文档更新 |
+| 0.7.0 | 会话 SQLite 持久化、登录限流、账户管理、审计轮转、韩文检索基准 |

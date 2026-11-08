@@ -19,6 +19,7 @@ PCI-DSS·NIST를 충족시키는 인증이 아닙니다.
 | AUTH-4 | 로그인 무차별 대입 잠금(사용자명+IP별, HTTP 429) + 로그인 성공/실패 감사 | `src/dashboard/ratelimit.ts`, `event: "auth"` 감사 |
 | AUTH-5 | 계정 수명주기 관리(생성/비밀번호 초기화/삭제, admin 역할, 최초 로그인 변경 강제) | `/api/users`, Settings 탭 |
 | SESS-1 | 운영자별 대화 격리 (인메모리 세션, LRU 상한, 유휴 축출) | `src/sessions.ts` |
+| SESS-2 | 세션 SQLite 영속화 (재시작 후 유지, 30일 프룬) | `src/sessions.ts`, `sessions` 테이블 |
 | AUDIT-1 | JSONL 감사: ts, sessionId, operator, decision, flaggedTargets, matchedSkills, 프롬프트 SHA-256 (원문 미기록) | `ORT_AUDIT_LOG` |
 | AUDIT-2 | `ORT_AUDIT_REQUIRED=1`이면 감사 기록 실패 시 요청 실패 | `src/dashboard/server.ts` |
 | AUDIT-3 | `ORT_AUDIT_MAX_BYTES` 도달 시 감사 로그 로테이션(단일) | `src/auditlog.ts` |

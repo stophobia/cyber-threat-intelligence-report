@@ -19,6 +19,7 @@ PCI-DSS 或 NIST 的合规认证。
 | AUTH-4 | 登录暴力破解锁定（按用户名+IP，HTTP 429）+ 登录成功/失败审计 | `src/dashboard/ratelimit.ts`、`event: "auth"` 审计 |
 | AUTH-5 | 账户生命周期管理（创建/重置密码/删除，admin 角色，首次登录强制改密） | `/api/users`、Settings 页 |
 | SESS-1 | 按操作员隔离对话（内存会话、LRU 上限、空闲淘汰） | `src/sessions.ts` |
+| SESS-2 | 会话 SQLite 持久化（重启后保留，30 天清理） | `src/sessions.ts`、`sessions` 表 |
 | AUDIT-1 | JSONL 审计：ts、sessionId、operator、decision、flaggedTargets、matchedSkills、提示词 SHA-256（不存原文） | `ORT_AUDIT_LOG` |
 | AUDIT-2 | `ORT_AUDIT_REQUIRED=1` 时审计写入失败即请求失败 | `src/dashboard/server.ts` |
 | AUDIT-3 | 审计日志达到 `ORT_AUDIT_MAX_BYTES` 时轮转（单次） | `src/auditlog.ts` |

@@ -45,6 +45,7 @@ followed by the remaining claude-red categories. All 79 skills across 23 categor
 - [x] Token budget engine (context limits, section truncation, index_only)
 - [x] History token budget (oldest-first trimming, droppedTurns marker)
 - [x] Session isolation per operator (SessionStore, X-Ort-Session, OIDC sub ownership)
+- [x] Session persistence in SQLite (30-day prune; memory fallback without local auth)
 - [x] Scope guardrails (deny before model call), fail-closed startup (exit 1)
 - [x] Local accounts (SQLite): admin/admin forced password change, HMAC tokens
 - [x] Dashboard runtime settings (scope/budget/engine live mutation, admin role)
@@ -92,3 +93,4 @@ autonomous execution.
 | 0.4.0 | Token budget, 30 tests, scope guardrails, LangFuse/OIDC/metrics, deployment tooling |
 | 0.5.0 | P0 hardening: scope denial (0 calls), session isolation, history budget, fail-closed, PoC compose, required secrets, 63 tests, retrieval baseline, compliance doc |
 | 0.6.0 | SQLite local accounts (admin/admin forced change), dashboard Settings tab, roadmap/docs update |
+| 0.7.0 | Session persistence in SQLite, login rate limiting, user management, audit rotation, Korean retrieval baseline |

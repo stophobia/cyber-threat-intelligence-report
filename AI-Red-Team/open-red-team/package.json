@@ -1,6 +1,6 @@
 {
   "name": "open-ai-red-team",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Model-agnostic offensive security skills middleware for DeepSeek, GLM, and open-weight models",
   "type": "module",
   "bin": {
@@ -58,5 +58,10 @@
     "typescript": "^5.6.0",
     "vitest": "^5.1.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gameworkerkim/CYBER-THREAT-INTELLIGENCE-REPORT",
+    "directory": "AI-Red-Team/open-red-team"
+  }
 }

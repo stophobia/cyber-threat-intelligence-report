@@ -165,6 +165,7 @@ export class OpenRedTeam {
       onReasoning: opts?.onReasoning,
     });
     historyRef.push({ role: "assistant", content });
+    opts?.session?.persist?.();
 
     const matchedSkills = loaded.map((s) => s.frontmatter.name);
     void recordChat({

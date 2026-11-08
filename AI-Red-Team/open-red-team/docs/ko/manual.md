@@ -265,7 +265,8 @@ docker compose up -d ort    # http://localhost:8081
 | `ORT_SCOPE_MODE` | `open`이면 도메인 검사 해제(로컬 랩 전용) |
 | `ORT_OPERATOR` | 감사 항목·LangFuse 트레이스에 기록되는 운영자 식별자 |
 
-세션은 인메모리(LRU 상한, 유휴 축출)이며 **서버 재시작 후 초기화**됩니다 — 디스크 영속은 이번 릴리스 범위 밖입니다.
+세션은 SQLite(`ORT_DB_PATH`의 `sessions` 테이블, 30일 프룬)에 영속화되어 **서버 재시작 후에도 유지**됩니다.
+로컬 인증 비활성 시에만 인메모리 폴백이 적용됩니다.
 
 ### 관측
 

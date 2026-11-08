@@ -247,7 +247,8 @@ back to the env. Mutable keys: `ORT_SCOPE`, `ORT_SCOPE_DOMAINS`, `ORT_SCOPE_MODE
 
 Sessions: the client sends `X-Ort-Session`; the server issues a session id in the first `session`
 SSE event and returns it again in `done`/`denied`. Sessions are in-memory (LRU cap, idle eviction) —
-**they do not survive a server restart** (disk persistence is out of scope for this release).
+**they survive a server restart** — sessions are persisted in SQLite (`sessions` table in
+`ORT_DB_PATH`, 30-day prune). Memory-only fallback applies when local auth is disabled.
 
 Docker:
 

@@ -7,7 +7,6 @@ import type { Page } from "puppeteer-core";
 import { OpenRedTeam } from "../src/index.js";
 import { startDashboard } from "../src/dashboard/server.js";
 import { openDb } from "../src/dashboard/db.js";
-import type { Server } from "node:http";
 
 const OUT = join(process.cwd(), "assets", "screenshots");
 
@@ -24,13 +23,6 @@ const DEMO_AUDIT = `{"ts":"2026-11-04T09:12:03.000Z","event":"chat","sessionId":
 {"ts":"2026-11-04T10:48:09.000Z","event":"chat","sessionId":"s_demo2","operator":"park.analyst","decision":"deny","flaggedTargets":["evil.example.org"],"matchedSkills":[],"promptSha256":"9d989e8d27dc9e0ec3389fc4af142c33","responseChars":218,"provider":"openweight","model":"qwen2.5:32b"}
 {"ts":"2026-11-04T11:02:41.000Z","event":"auth","action":"login","username":"admin","outcome":"success","ip":"127.0.0.1"}
 `;
-
-async function listen(server: Server): Promise<void> {
-  return new Promise((resolve, reject) => {
-    server.once("listening", resolve);
-    server.once("error", reject);
-  });
-}
 
 async function shot(page: Page, name: string): Promise<void> {
   await new Promise((r) => setTimeout(r, 1200));

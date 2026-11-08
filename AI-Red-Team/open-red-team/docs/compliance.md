@@ -20,6 +20,7 @@ regulations, PCI-DSS, or NIST.
 | AUTH-4 | Login brute-force lockout (per username+IP, HTTP 429) with audit of login success/failure | `src/dashboard/ratelimit.ts`, `event: "auth"` audit records |
 | AUTH-5 | User lifecycle management (create / reset-password / delete, admin role, forced first-login change) | `/api/users`, Settings tab |
 | SESS-1 | Per-operator conversation isolation (in-memory sessions, LRU cap, idle eviction) | `src/sessions.ts` |
+| SESS-2 | Session persistence in SQLite (survives restart, 30-day prune) | `src/sessions.ts`, `sessions` table |
 | AUDIT-1 | JSONL audit entries: ts, sessionId, operator, decision, flaggedTargets, matchedSkills, prompt SHA-256 (no prompt plaintext) | `ORT_AUDIT_LOG` |
 | AUDIT-2 | `ORT_AUDIT_REQUIRED=1` fails the request when the audit write fails | `src/dashboard/server.ts` |
 | AUDIT-3 | Audit log rotation at `ORT_AUDIT_MAX_BYTES` (single rotation) | `src/auditlog.ts` |

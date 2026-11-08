@@ -2,6 +2,14 @@
 
 All notable changes to Open AI Red Team are recorded here.
 
+## [0.7.0] — 2026-11-05
+
+### Added
+- **Session persistence (SQLite)** — sessions survive server restarts (`sessions` table,
+  30-day prune, lazy load with LRU memory cache); memory-only fallback when local auth is
+  disabled
+- npm publish readiness: `repository` metadata, `npm pack` verified (187 files, 1.8 MB)
+
 ## [Unreleased]
 
 ### Added

@@ -86,6 +86,7 @@ node dist/src/cli.js dashboard   # Web 管理面板（http://localhost:8081）
 | 0.4.0 | 令牌预算、测试、范围护栏、LangFuse/OIDC/指标、部署工具 |
 | 0.5.0 | 范围拒绝（0 调用）、会话隔离、历史预算、fail-closed、PoC compose、必需密钥、检索基准 |
 | 0.6.0 | SQLite 本地账户（admin/admin 强制改密）、面板 Settings 页 |
+| 0.7.0 | 会话 SQLite 持久化、登录限流、账户管理、审计轮转、韩文检索基准 |
 
 ## 验证状态
 

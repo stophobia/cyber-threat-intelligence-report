@@ -90,6 +90,7 @@ node dist/src/cli.js dashboard   # 웹 대시보드 (http://localhost:8081)
 | 0.4.0 | 토큰 예산, 테스트, 스코프 가드레일, LangFuse/OIDC/메트릭, 배포 도구 |
 | 0.5.0 | 범위 거절(0호출), 세션 분리, 히스토리 예산, fail-closed, PoC compose, 시크릿 필수화, 검색 기준선 |
 | 0.6.0 | SQLite 로컬 계정(admin/admin 강제 변경), 대시보드 Settings 탭 |
+| 0.7.0 | 세션 SQLite 영속화, 로그인 rate limit, 계정 관리, 감사 로테이션, 한국어 검색 기준선 |
 
 ## 검증 현황
 

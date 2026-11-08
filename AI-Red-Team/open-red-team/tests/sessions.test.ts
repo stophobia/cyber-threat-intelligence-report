@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { SessionStore } from "../src/sessions.js";
+import { openDb } from "../src/dashboard/db.js";
 
 describe("SessionStore", () => {
   it("creates unique sessions with operator and timestamps", () => {
@@ -42,5 +43,28 @@ describe("SessionStore", () => {
     expect(store.get(a.id)).toBeDefined();
     expect(store.get(b.id)).toBeUndefined();
     expect(store.get(c.id)).toBeDefined();
+  });
+
+  it("persists sessions in SQLite across store instances", () => {
+    const ort = openDb(":memory:");
+    try {
+      const first = new SessionStore({ db: ort });
+      const session = first.create("alice");
+      session.history.push({ role: "user", content: "hello" });
+      session.history.push({ role: "assistant", content: "hi there" });
+      session.persist?.();
+
+      const second = new SessionStore({ db: ort });
+      const loaded = second.get(session.id);
+      expect(loaded).toBeDefined();
+      expect(loaded!.history).toHaveLength(2);
+      expect(loaded!.operator).toBe("alice");
+
+      second.reset(session.id);
+      const third = new SessionStore({ db: ort });
+      expect(third.get(session.id)?.history).toHaveLength(0);
+    } finally {
+      ort.close();
+    }
   });
 });

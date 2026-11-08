@@ -91,6 +91,7 @@ node dist/src/cli.js dashboard   # Webダッシュボード（http://localhost:8
 | 0.4.0 | トークン予算、テスト、スコープガードレール、LangFuse/OIDC/メトリクス、デプロイツール |
 | 0.5.0 | スコープ拒否（0呼び出し）、セッション分離、履歴予算、fail-closed、PoC compose、シークレット必須化、検索基準線 |
 | 0.6.0 | SQLiteローカルアカウント（admin/admin強制変更）、ダッシュボードSettingsタブ |
+| 0.7.0 | セッションのSQLite永続化、ログイン制限、アカウント管理、監査ローテーション、韓国語検索基準線 |
 
 ## 検証状況
 

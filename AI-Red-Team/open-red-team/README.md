@@ -111,6 +111,7 @@ First dashboard login: **admin / admin** (forced password change).
 | 0.4.0 | Token budget, tests, scope guardrails, LangFuse/OIDC/metrics, deployment tooling |
 | 0.5.0 | Scope denial (0 calls), session isolation, history budget, fail-closed, PoC compose, required secrets, retrieval baseline |
 | 0.6.0 | SQLite local accounts (admin/admin forced change), dashboard Settings tab |
+| 0.7.0 | Session persistence in SQLite, login rate limiting, user management, audit rotation, Korean retrieval baseline |
 
 ## Verification Status
 

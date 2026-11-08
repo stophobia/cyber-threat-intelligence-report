@@ -44,6 +44,7 @@
 - [x] 웹 대시보드 (세션, 감사, OIDC, 메트릭)
 - [x] 토큰 예산 엔진 (컨텍스트 한도, 섹션 절단, index_only) + 히스토리 턴 예산
 - [x] 운영자별 세션 분리 (SessionStore, X-Ort-Session, OIDC sub 귀속)
+- [x] 세션 SQLite 영속화 (30일 프룬, 로컬 인증 없을 때만 인메모리 폴백)
 - [x] 범위 가드레일(호출 전 거절) + fail-closed 기동(exit 1)
 - [x] 로컬 계정(SQLite): admin/admin 비밀번호 변경 강제, HMAC 토큰
 - [x] 대시보드 런타임 설정 (스코프/예산/엔진 즉시 반영, admin 역할)
@@ -87,3 +88,4 @@
 | 0.4.0 | 토큰 예산, 테스트 30개, 스코프 가드레일, LangFuse/OIDC/메트릭, 배포 도구 |
 | 0.5.0 | P0 강화: 범위 거절(0호출), 세션 분리, 히스토리 예산, fail-closed, PoC compose, 시크릿 필수화, 테스트 63개, 검색 기준선, 컴플라이언스 문서 |
 | 0.6.0 | SQLite 로컬 계정(admin/admin 강제 변경), 대시보드 Settings 탭, 로드맵/문서 갱신 |
+| 0.7.0 | 세션 SQLite 영속화, 로그인 rate limit, 계정 관리, 감사 로테이션, 한국어 검색 기준선 |

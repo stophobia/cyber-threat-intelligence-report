@@ -111,7 +111,7 @@ export async function startDashboard(
     );
   }
 
-  const sessions = opts.sessions ?? new SessionStore();
+  const sessions = opts.sessions ?? new SessionStore({ db: db ?? undefined });
 
   const app = express();
   app.use(express.json({ limit: "1mb" }));
